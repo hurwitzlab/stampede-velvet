@@ -1,4 +1,4 @@
-EMAIL = user@domain.com
+EMAIL = kyclark@email.arizona.edu
 
 clean:
 	find . \( -name \*.conf -o -name \*.out -o -name \*.log -o -name \*.params -o -name launcher-\* \) -exec rm {} \;
@@ -13,10 +13,7 @@ testall:
 	./run-velvet.pl -d $(SCRATCH)/data/assembly/generic -s 29 -o $(SCRATCH)/velvet-out --debug
 
 submit:
-	sbatch test-velvet.sh
-
-foo:
-	./00-controller.sh -e $(EMAIL) -r 01-foo.sh -p development -t "02:00:00" -a foo
+	sbatch --mail-type BEGIN,END,FAIL --mail-user $(EMAIL) test-velvet.sh
 
 update:
 	apps-addupdate -F app.json
