@@ -12,7 +12,6 @@ use File::Path 'make_path';
 use File::Find::Rule;
 use Getopt::Long;
 use Pod::Usage;
-use Readonly;
 
 my $DEBUG = 0;
 
